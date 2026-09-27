@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1B1F4B">
+<title>Pearl Necklace Set — Pearls by Mangatrai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=30">
+</head>
+<body class="has-sticky">
+<div id="site-header"></div>
+
+<main class="container pdp" id="pdp">
+  <div class="gallery">
+    <span class="badge tag" id="pBadge">Bestseller</span>
+    <div class="thumbs" id="thumbs"></div>
+    <div class="main" id="mainImgs"></div>
+    <div class="dots" id="dots"></div>
+  </div>
+
+  <div class="buy">
+    <div class="crumbs"><a href="index.html">Home</a> › <a href="collection.html" id="pCrumb">Sets</a></div>
+    <h1 id="pTitle">…</h1>
+    <div class="rating"><span class="stars" id="pStars">★★★★★</span> <b id="pRating">4.9</b> · <a href="#reviews" id="pRevCount">128 reviews</a> · <span class="verified">✓ 5,000+ sold</span></div>
+    <div class="price"><b id="pPrice"></b><s id="pCompare"></s><em id="pSave"></em></div>
+    <div class="taxnote">Inclusive of all taxes · <b style="color:var(--green)">Free shipping</b> · No hidden charges</div>
+    <div class="emi-row">💳 <span>Or pay <b id="pEmi"></b> × 3, 0% interest with Simpl</span><a href="faq.html#emi">How?</a></div>
+
+    <div class="opt-group" data-for="bracelets rings earrings"><div class="opt-label">Finish <span>· White finish selected</span></div>
+    <div class="swatches"><button class="sw on">White finish</button><button class="sw">Gold finish</button></div></div>
+    <div class="opt-group" data-for="necklaces sets"><div class="opt-label">Length <span>· 18" sits at the collarbone</span></div>
+    <div class="swatches"><button class="sw">16" Choker</button><button class="sw on">18" Princess</button><button class="sw">20" Matinee</button></div></div>
+    <div class="opt-group" data-for="combo"><div class="opt-label">Gift message <span>· optional, handwritten</span></div>
+    <input class="gift-msg" maxlength="120" placeholder="e.g. Happy anniversary, Ma — with love" aria-label="Gift message"></div>
+
+    <div class="stock"><i></i> In stock · Ships in 24 hours from Hyderabad</div>
+    <div class="cta-stack">
+      <button class="btn btn-primary btn-lg" id="addBtn" data-add="">Add to bag · <span id="addPrice"></span></button>
+      <button class="btn btn-gold btn-lg btn-buynow" onclick="PBM.toast('Goes straight to Shopify checkout')"><span>Buy now</span><span class="btn-pay" aria-label="UPI, Visa, Mastercard, RuPay, cash on delivery"><img src="assets/pay/upi.svg" alt="UPI"><img src="assets/pay/visa.svg" alt="Visa"><img src="assets/pay/mastercard.svg" alt="Mastercard"><img src="assets/pay/rupay.png" alt="RuPay"><img src="assets/pay/cod.svg" alt="COD"></span></button>
+      <a class="btn btn-wa" href="https://wa.me/919100009220" target="_blank" rel="noopener"><img class="wa-logo" src="assets/pay/whatsapp.svg" alt="" aria-hidden="true"> Ask on WhatsApp · see it on video first</a>
+    </div>
+    <div class="pay-row">Pay with <span id="payRow"></span></div>
+
+    <div class="pincode">
+      <form id="pinForm"><input inputmode="numeric" maxlength="6" pattern="\d{6}" placeholder="Enter pincode for delivery date" required id="pin"><button class="btn btn-outline" type="submit">Check</button></form>
+      <div class="res" id="pinRes"><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span>Free delivery by <b id="delDate"></b> to most of India</span></div></div>
+      <div class="dispatch">⏱ <span id="countdown"></span></div>
+    </div>
+
+    <div class="assure">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V6l7-3z"/></svg><span>Certified real pearls<small>Certificate in the box</small></span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg><span>15-day easy returns<small>Free pickup, full refund</small></span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Lifelong guarantee<small>Restring &amp; polish, free</small></span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5h8v2M3 12h18"/></svg><span>Free gift box &amp; note<small>Add a message at checkout</small></span></div>
+    </div>
+
+    <div class="bundle" id="bundle"></div>
+
+    <div class="acc">
+      <details open><summary>Product details</summary><div class="in">
+        <p id="pDesc"></p>
+        <table class="spec"><tr><td>Pearl type</td><td>Freshwater cultured, A quality</td></tr><tr><td>Pearl size</td><td>3.5 – 8.0 mm, graded</td></tr><tr><td>Shape &amp; lustre</td><td>Oval · high lustre, clean surface</td></tr><tr><td>Length</td><td>Necklace 18" · Bracelet 7"</td></tr><tr><td>Clasp</td><td>Secure hook, silver-tone</td></tr><tr><td>Weight</td><td>Approx. 24 g (lightweight, all-day wear)</td></tr><tr><td>SKU</td><td id="pSku">PN 131</td></tr></table>
+      </div></details>
+      <details><summary>Authenticity &amp; guarantee</summary><div class="in">
+        <div class="cert"><img src="https://pearlsbymangatrai.com/cdn/shop/files/CERTIFICATE_MNG_P_Recovered_-03_PEARLS.jpg?width=300" alt="Certificate of authenticity"><div><b>Certificate of Authenticity</b><small>Signed by Mangatrai, Hyderabad. Confirms genuine cultured pearls. Lifelong guarantee on pearls, free restringing at any showroom.</small></div></div>
+      </div></details>
+      <details><summary>Shipping, returns &amp; COD</summary><div class="in"><p><b>Free shipping</b> across India, insured. Dispatch within 24 hours (Mon–Sat).</p><p><b>Cash on delivery</b> available up to ₹20,000.</p><p><b>Returns:</b> 15 days, free pickup, full refund to source. Exchanges any time for sizing.</p></div></details>
+      <details><summary>Pearl care</summary><div class="in"><p>Last on, first off. Wipe with a soft cloth after wear, keep away from perfume and store in the pouch provided. Bring it to any showroom for a free polish.</p></div></details>
+    </div>
+  </div>
+</main>
+
+<section class="section" id="reviews" style="background:#fff">
+  <div class="container">
+    <div class="rev-summary"><span class="big" id="rBig">4.9</span><div><div class="stars" style="font-size:18px">★★★★★</div><div style="font-size:13.5px;color:var(--muted)" id="rCount">128 verified reviews · 96% would recommend</div></div><button class="btn btn-outline btn-sm" style="margin-left:auto" onclick="PBM.toast('Opens Judge.me review form')">Write a review</button></div>
+    <div class="rev-list" id="revList"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head"><div><div class="eyebrow">You may also like</div><h2>Pairs well with</h2></div></div>
+    <div class="grid" id="related"></div>
+  </div>
+</section>
+
+<section class="section" style="background:#fff">
+  <div class="container" style="max-width:820px">
+    <div class="eyebrow">Questions</div><h2 style="margin-bottom:12px">Before you buy</h2>
+    <div class="faq">
+      <details><summary>How do I know the pearls are real?</summary><div class="in">Every piece ships with a signed certificate of authenticity. Real pearls feel slightly gritty against your teeth and are cool to the touch. If a lab ever finds otherwise, we refund in full, for life.</div></details>
+      <details><summary>Will it look like the photos?</summary><div class="in">Yes. Photos are of the actual grade you receive, shot in daylight. Want to see your exact strand? WhatsApp us for a 1-minute video before dispatch.</div></details>
+      <details><summary>Can I pay cash on delivery?</summary><div class="in">Yes, COD is available on orders up to ₹20,000. UPI, cards and 0% EMI via Simpl are also available.</div></details>
+      <details><summary>What if it doesn't suit me?</summary><div class="in">Return within 15 days for a full refund. We arrange the pickup, free. Exchanges for length or finish are free any time.</div></details>
+    </div>
+  </div>
+</section>
+
+<div class="sticky-atc" id="sticky"><img id="sImg" src="" alt=""><div><div class="t" id="sTitle"></div><div class="p" id="sPrice"></div></div><button class="btn btn-primary" id="sAdd" data-add="">Add to bag</button></div>
+
+<div id="site-footer"></div>
+<script src="assets/data.js?v=30"></script>
+<script src="assets/app.js?v=30"></script>
+<script>
+window.PBM_PAGE = function(){
+  const {P, byHandle, inr, cardHTML, stars, savePct, deliveryDate, dispatchCountdown} = PBM;
+  const h = new URLSearchParams(location.search).get('handle');
+  const p = byHandle[h] || P[0];
+  document.title = p.title + ' — Pearls by Mangatrai';
+  const set=(id,v)=>document.getElementById(id).textContent=v;
+  set('pTitle',p.title); set('pPrice',inr(p.price)); set('pCompare',inr(p.compare)); set('pSave',`Save ${savePct(p)}% · ${inr(p.compare-p.price)}`);
+  set('pEmi',inr(p.price/3)); set('addPrice',inr(p.price)); set('pRating',p.rating); set('pRevCount',`${p.reviews} reviews`); set('rBig',p.rating); set('rCount',`${p.reviews} verified reviews · 96% would recommend`);
+  document.getElementById('pStars').textContent=stars(p.rating);
+  document.getElementById('pBadge').textContent = p.badge || `Save ${savePct(p)}%`;
+  if(p.combo){ document.getElementById('pBadge').classList.add('viral'); document.querySelector('.stock').insertAdjacentHTML('beforebegin','<div class="combo-note">🎁 <b>Combo · best value.</b> Several pieces at one price, packed in the navy Mangatrai gift box with a handwritten note.</div>'); }
+  document.getElementById('pCrumb').textContent = p.cat[0].toUpperCase()+p.cat.slice(1); document.getElementById('pCrumb').href='collection.html?cat='+p.cat;
+  document.getElementById('pDesc').textContent = `Hand-graded ${p.color} freshwater pearls with soft natural lustre. ${p.cat==='sets'?'The necklace comes with a matching bracelet and classic stud earrings — ':'Made to be worn every day — '}perfect for weddings, festive occasions and elegant everyday wear.`;
+  document.getElementById('pSku').textContent = 'PBM-' + String(p.id).slice(-5);
+  ['addBtn','sAdd'].forEach(id=>document.getElementById(id).dataset.add=p.handle);
+  document.getElementById('payRow').outerHTML=PBM.payLogos('inline');
+  document.getElementById('sImg').src=p.images[0]; set('sTitle',p.title); set('sPrice',inr(p.price));
+  // gallery
+  const main=document.getElementById('mainImgs'), th=document.getElementById('thumbs'), dots=document.getElementById('dots');
+  main.innerHTML = p.images.map((s,i)=>`<img src="${s}" alt="${p.title} view ${i+1}" ${i?'loading="lazy"':'fetchpriority="high"'}>`).join('');
+  th.innerHTML = p.images.map((s,i)=>`<img src="${s.replace('width=900','width=160')}" class="${i?'':'on'}" data-i="${i}" alt="">`).join('');
+  dots.innerHTML = p.images.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('');
+  th.addEventListener('click',e=>{ const t=e.target.closest('[data-i]'); if(!t) return; const i=+t.dataset.i; main.scrollLeft=main.clientWidth*i; th.querySelectorAll('img').forEach((x,k)=>x.classList.toggle('on',k===i)); });
+  main.addEventListener('scroll',()=>{ const i=Math.round(main.scrollLeft/main.clientWidth); dots.querySelectorAll('i').forEach((d,k)=>d.classList.toggle('on',k===i)); th.querySelectorAll('img').forEach((x,k)=>x.classList.toggle('on',k===i)); },{passive:true});
+  document.querySelectorAll('.opt-group').forEach(g=>{ const f=g.dataset.for.split(' '); g.hidden = p.combo ? !f.includes('combo') : !f.includes(p.cat); });
+  document.querySelectorAll('.swatches').forEach(g=>g.addEventListener('click',e=>{ const b=e.target.closest('.sw'); if(!b) return; g.querySelectorAll('.sw').forEach(x=>x.classList.toggle('on',x===b)); const lbl=g.previousElementSibling.querySelector('span'); if(lbl) lbl.textContent=' · '+b.textContent+(b.textContent.includes('"')?' selected':' selected'); }));
+  // delivery + countdown
+  set('delDate', deliveryDate(3)); dispatchCountdown(document.getElementById('countdown'));
+  document.getElementById('pinForm').addEventListener('submit',e=>{ e.preventDefault(); const pin=document.getElementById('pin').value; const metro=/^(5000|5600|4000|1100|6000|7000|4110|3800)/.test(pin); const d=metro?2:4;
+    document.getElementById('pinRes').innerHTML=`<div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Delivers to <b>${pin}</b> by <b>${deliveryDate(d)}</b> · Free</div><div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Cash on delivery available</div>`; });
+  // sticky ATC on mobile after primary CTA scrolls out
+  const sticky=document.getElementById('sticky'), cta=document.getElementById('addBtn');
+  new IntersectionObserver(es=>sticky.classList.toggle('on', !es[0].isIntersecting && es[0].boundingClientRect.top<0)).observe(cta);
+  // bundle: complete the look
+  const mates = P.filter(x=>x.handle!==p.handle && x.cat!==p.cat && x.price<3000).slice(0,2);
+  const tot = p.price+mates.reduce((a,b)=>a+b.price,0), disc=Math.round(tot*0.9);
+  document.getElementById('bundle').innerHTML = `<div class="eyebrow" style="margin-bottom:6px">Complete the look · save 10%</div><div class="items"><img src="${p.images[0]}" alt="">${mates.map(m=>`<span class="plus">+</span><img src="${m.images[0]}" alt="${m.title}">`).join('')}</div>
+    <div style="font-size:13px;color:var(--ink-2)">This ${p.cat==='sets'?'set':'piece'} + ${mates.map(m=>m.title.split(' ').slice(0,3).join(' ')).join(' + ')}</div>
+    <div class="sum"><div><b>${inr(disc)}</b><s>${inr(tot)}</s><em>You save ${inr(tot-disc)} · bundle discount applied</em></div><button class="btn btn-outline btn-sm" onclick="${mates.map(m=>`PBM.cart.add('${m.handle}');`).join('')}PBM.cart.add('${p.handle}');PBM.toast('Bundle added · 10% off applied')">Add all 3</button></div>`;
+  // reviews
+  const revs=[['Sushma R.','Hyderabad','2 weeks ago','Exactly as pictured. Wore it for my sister\'s wedding and got so many compliments. The certificate and gift box made it feel premium.',[p.images[1]||p.images[0]]],['Deepthi K.','Bengaluru','1 month ago','Ordered on Tuesday, delivered Thursday. The lustre is lovely in daylight. I asked for a video before dispatch and they sent it in 10 minutes.',[]],['Meera N.','Pune','2 months ago','Good quality for the price. Clasp is secure. I wish the bracelet was slightly longer — they offered a free exchange, which was nice.',[]]];
+  document.getElementById('revList').innerHTML = revs.map((r,i)=>`<div class="rev-item"><div class="top"><span><b>${r[0]}</b> · ${r[1]} <span class="verified">✓ Verified</span></span><span>${r[2]}</span></div><div class="stars">${i===2?'★★★★☆':'★★★★★'}</div><p>${r[3]}</p>${r[4].length?`<div class="ph">${r[4].map(s=>`<img src="${s}" alt="">`).join('')}</div>`:''}${i===2?`<div class="reply"><b>Mangatrai replied:</b> Thank you Meera! We've noted the 7.5" bracelet preference on your profile for next time.</div>`:''}</div>`).join('');
+  // related
+  document.getElementById('related').innerHTML = P.filter(x=>x.handle!==p.handle && (x.cat===p.cat || x.price<p.price)).slice(0,4).map(x=>cardHTML(x)).join('');
+};
+</script>
+</body>
+</html>

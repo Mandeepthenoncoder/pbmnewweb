@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1B1F4B">
+<title>Saved Items — Pearls by Mangatrai</title>
+<meta name="description" content="Your saved pearl pieces at Pearls by Mangatrai.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=30">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="container plp-head"><div class="crumbs"><a href="index.html">Home</a> › Saved items</div><h1>Saved items</h1><p id="wishSub">Pieces you have hearted. Saved on this device.</p></div>
+<div class="container" style="padding-bottom:40px"><div class="grid" id="wishGrid"></div></div>
+
+<div id="site-footer"></div>
+<script src="assets/data.js?v=30"></script>
+<script src="assets/app.js?v=30"></script>
+<script>
+window.PBM_PAGE = function(){
+const render=()=>{ const w=PBM.wish.get().map(h=>PBM.byHandle[h]).filter(Boolean); const g=document.getElementById('wishGrid'); document.getElementById('wishSub').textContent = w.length? `${w.length} saved · free shipping on all` : 'Pieces you have hearted. Saved on this device.'; g.innerHTML = w.length ? w.map(p=>PBM.cardHTML(p)).join('') : `<div class="wish-empty" style="grid-column:1/-1"><p style="font-size:40px;margin:0">🤍</p><p><b>Nothing saved yet</b></p><p>Tap the heart on any piece to keep it here.</p><a class="btn btn-primary btn-sm" href="collection.html?cat=combos">Browse viral combos</a></div>`; };
+render(); document.addEventListener('click',e=>{ if(e.target.closest('[data-wish]')) setTimeout(render,50); });
+};
+</script>
+</body>
+</html>

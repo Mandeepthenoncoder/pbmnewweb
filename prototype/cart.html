@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1B1F4B">
+<title>Your Bag — Pearls by Mangatrai</title>
+<meta name="description" content="Review your bag at Pearls by Mangatrai. Free shipping, COD and 0% EMI on every order.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=30">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="container plp-head"><div class="crumbs"><a href="index.html">Home</a> › Your bag</div><h1>Your bag <span id="bagN" style="font-family:var(--sans);font-size:16px;color:var(--muted);font-weight:500"></span></h1></div>
+<div class="container cartpage">
+  <div>
+    <div id="lines"></div>
+    <div id="upsellPage" style="margin-top:28px"></div>
+  </div>
+  <aside class="summary">
+    <div class="ship-bar" style="margin:-20px -20px 0;border-radius:var(--r) var(--r) 0 0"><div><span id="shipMsgP"></span><div class="ship-track"><i id="shipBarP"></i></div></div></div>
+    <div class="r"><span>Subtotal</span><b id="sub"></b></div>
+    <div class="r"><span>Shipping</span><b style="color:var(--green)">Free</b></div>
+    <div class="r" id="discRow" hidden><span>WELCOME5 (5% off)</span><b id="disc" style="color:var(--green)"></b></div>
+    <div class="promo"><input id="promo" placeholder="Promo code" aria-label="Promo code"><button class="btn btn-outline btn-sm" id="applyPromo">Apply</button></div>
+    <span class="ok" id="promoOk" hidden>✓ WELCOME5 applied</span>
+    <div class="r tot"><span>Total <small style="color:var(--muted)">incl. GST</small></span><b id="tot"></b></div>
+    <a class="btn btn-primary btn-lg btn-block" href="checkout.html">Checkout securely →</a>
+    <a class="btn btn-wa btn-block" href="https://wa.me/919100009220" target="_blank" rel="noopener"><img class="wa-logo" src="assets/pay/whatsapp.svg" alt="" aria-hidden="true"> Order on WhatsApp</a>
+    <p class="note" style="font-size:12px;color:var(--muted);text-align:center;margin:0">Ships in 24 hrs from Hyderabad · Certificate included · 15-day returns</p>
+    <div id="payP"></div>
+  </aside>
+</div>
+
+<div id="site-footer"></div>
+<script src="assets/data.js?v=30"></script>
+<script src="assets/app.js?v=30"></script>
+<script>
+window.PBM_PAGE = function(){
+const {P,byHandle,inr,cart}=PBM; const T=5000;
+document.getElementById('payP').innerHTML=PBM.payLogos();
+function render(){ const c=cart.get(); const n=cart.count(); document.getElementById('bagN').textContent=n?`(${n} item${n>1?'s':''})`:'';
+  const L=document.getElementById('lines');
+  if(!c.length){ L.innerHTML=`<div class="empty" style="background:#fff;border:1px dashed var(--line);border-radius:var(--r)"><p style="font-size:40px;margin:0">🤍</p><p><b>Your bag is empty</b></p><p>Our viral combos start at ₹1,855, with free shipping.</p><a class="btn btn-primary btn-sm" href="collection.html?cat=combos">Shop combos</a></div>`; }
+  else L.innerHTML=c.map(i=>{const p=byHandle[i.handle]; if(!p) return ''; return `<div class="cart-line"><a href="product.html?handle=${p.handle}"><img src="${p.images[0]}" alt=""></a><div><a class="t" href="product.html?handle=${p.handle}">${p.title}</a><div class="p">${inr(p.price)}<s>${inr(p.compare)}</s></div><div class="qty"><button data-q="${p.handle}" data-d="-1">−</button><span>${i.qty}</span><button data-q="${p.handle}" data-d="1">+</button></div><br><button class="rm" data-rm="${p.handle}">Remove</button></div><div class="lt">${inr(p.price*i.qty)}</div></div>`;}).join('');
+  const sub=cart.total(); const pr=PBM.promo(); const promo=!!pr; const disc=pr?Math.round(sub*pr.pct/100):0;
+  document.getElementById('sub').textContent=inr(sub); document.getElementById('tot').textContent=inr(sub-disc);
+  document.getElementById('discRow').hidden=!promo||!sub; document.getElementById('disc').textContent='−'+inr(disc); document.getElementById('promoOk').hidden=!promo; if(pr){ document.querySelector('#discRow span').textContent=`${pr.code} (${pr.pct}% off)`; document.getElementById('promoOk').textContent=`✓ ${pr.code} applied`; }
+  document.getElementById('shipMsgP').innerHTML = !sub ? 'Free shipping &amp; free returns on every order' : sub>=T ? '🎁 Free pearl care kit &amp; velvet pouch unlocked' : `Add <b>${inr(T-sub)}</b> more for a free pearl care kit &amp; velvet pouch`;
+  document.getElementById('shipBarP').style.width=Math.min(100,sub/T*100)+'%';
+  const inC=new Set(c.map(x=>x.handle)); const sugg=P.filter(p=>!inC.has(p.handle)&&p.combo&&p.price<=5250).slice(0,4);
+  document.getElementById('upsellPage').innerHTML=`<div class="section-head"><div><div class="eyebrow">Complete the look</div><h2 style="font-size:24px">Pairs well with your bag</h2></div></div><div class="grid">${sugg.map(p=>PBM.cardHTML(p)).join('')}</div>`;
+}
+document.getElementById('applyPromo').addEventListener('click',()=>{ const v=document.getElementById('promo').value.trim().toUpperCase(); if(PBM.PROMOS[v]){ localStorage.setItem('pbm_promo',v); PBM.toast(`${v} applied · ${PBM.PROMOS[v]}% off`); } else { localStorage.removeItem('pbm_promo'); PBM.toast('Code not recognised'); } render(); });
+const _rc=PBM.renderCart; PBM.renderCart=function(){ _rc(); render(); }; render();
+};
+</script>
+</body>
+</html>

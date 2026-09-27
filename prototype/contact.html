@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1B1F4B">
+<title>Showrooms & Contact — Pearls by Mangatrai</title>
+<meta name="description" content="Visit Pearls by Mangatrai at Liberty, Gachibowli or Taj Falaknuma in Hyderabad, or reach us on WhatsApp, phone and email. Monday to Saturday.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=30">
+</head>
+<body>
+<div id="site-header"></div>
+
+<section class="page-hero"><div class="container"><div class="eyebrow">Showrooms &amp; contact</div><h1>Talk to a pearl expert</h1><p>Fastest on WhatsApp: send a photo of your outfit or the product link and we reply within minutes, Monday to Saturday, 11 am to 8 pm.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:18px"><a class="btn btn-wa" href="https://wa.me/919100009220" target="_blank" rel="noopener"><img class="wa-logo" src="assets/pay/whatsapp.svg" alt="" aria-hidden="true"> WhatsApp +91 91000 09220</a><a class="btn btn-outline" href="tel:+919100009220">Call +91 91000 09220</a><a class="btn btn-outline" href="mailto:sales@pearlsbymangatrai.com">Email us</a></div></div></section>
+<section class="section"><div class="container">
+  <div class="section-head"><div><div class="eyebrow">Visit us in Hyderabad</div><h2>Three pearl boutiques</h2><p>Online prices honoured in store. Bring your Mangatrai pearls for free cleaning or restringing.</p></div></div>
+  <div class="showrooms">
+    <div class="showroom"><b>Mangatrai Liberty</b><p>Opp. Liberty Petrol Pump, Hill Fort, Basheer Bagh, Hyderabad, Telangana 500063</p><small>Mon – Sat · 11 am – 8 pm</small><a class="btn btn-outline btn-sm" href="https://maps.app.goo.gl/p9fcFUMCWtJuaEYc7" target="_blank" rel="noopener">Get directions</a></div>
+    <div class="showroom"><b>Mangatrai Gachibowli</b><p>Shop No. 9, Ground Floor, The Platina, Gachibowli – Miyapur Rd, Gachibowli, Hyderabad, Telangana 500032</p><small>Mon – Sat · 11 am – 8 pm</small><a class="btn btn-outline btn-sm" href="https://maps.app.goo.gl/x4FYwjMg6XLtmeU4A" target="_blank" rel="noopener">Get directions</a></div>
+    <div class="showroom"><b>Mangatrai Taj Falaknuma Boutique</b><p>Engine Bowli, Falaknuma, Hyderabad, Telangana 500053</p><small>Inside Taj Falaknuma Palace · hotel hours</small><a class="btn btn-outline btn-sm" href="https://maps.app.goo.gl/KgWML4i3ahNZYa9u9" target="_blank" rel="noopener">Get directions</a></div>
+  </div>
+</div></section>
+<section class="section" style="background:#fff"><div class="container two">
+  <div class="card-box">
+    <h2 style="font-size:26px;margin-bottom:6px">Send us a message</h2><p style="color:var(--muted);font-size:14px;margin-bottom:16px">We reply within one working day. For anything urgent, WhatsApp is faster.</p>
+    <form class="form" id="contactForm">
+      <div class="row2"><label>Name<input required name="name" autocomplete="name"></label><label>Phone / WhatsApp<input required name="phone" inputmode="tel" autocomplete="tel" placeholder="+91"></label></div>
+      <label>Email<input type="email" name="email" autocomplete="email"></label>
+      <label>What can we help with?<select name="topic"><option>Help me choose a piece</option><option>Order status or delivery</option><option>Return or exchange</option><option>Restringing / repair</option><option>Corporate or bulk gifting</option><option>Something else</option></select></label>
+      <label>Message<textarea rows="4" name="msg" required></textarea></label>
+      <button class="btn btn-primary btn-lg" type="submit">Send message</button>
+    </form>
+  </div>
+  <aside>
+    <div class="video-banner"><div class="vis"><img src="https://pearlsbymangatrai.com/cdn/shop/files/Generated_Image_September_29_2025_-_1_03PM.jpg?width=800" alt="" loading="lazy"><span class="live">LIVE VIDEO</span><a class="play" href="https://wa.me/919100009220" target="_blank" rel="noopener" aria-label="Request a video on WhatsApp"><img src="assets/pay/whatsapp.svg" alt=""></a></div>
+    <div class="copy"><h2 style="font-size:24px">See it on video before you buy</h2><p>Message us the product link. We film your exact piece under daylight and send it on WhatsApp within minutes.</p><a class="btn btn-wa" href="https://wa.me/919100009220" target="_blank" rel="noopener"><img class="wa-logo" src="assets/pay/whatsapp.svg" alt="" aria-hidden="true"> Request a video</a></div></div>
+    <div class="help" style="margin-top:14px;grid-template-columns:1fr"><div class="box"><div><b>Corporate gifting</b><p>Pearl boxes for teams, clients and weddings, with custom notes and bulk pricing. Email sales@pearlsbymangatrai.com.</p></div></div></div>
+  </aside>
+</div></section>
+
+<div id="site-footer"></div>
+<script src="assets/data.js?v=30"></script>
+<script src="assets/app.js?v=30"></script>
+<script>
+window.PBM_PAGE = function(){
+document.getElementById('contactForm').addEventListener('submit',e=>{e.preventDefault();PBM.toast('Thank you, we will reply within one working day');e.target.reset();});
+};
+</script>
+</body>
+</html>

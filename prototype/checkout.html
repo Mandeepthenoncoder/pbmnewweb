@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1B1F4B">
+<title>Checkout — Pearls by Mangatrai</title>
+<meta name="description" content="Secure checkout at Pearls by Mangatrai. UPI, cards, cash on delivery and 0% EMI.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=30">
+</head>
+<body data-bnav="off" data-luck="off">
+<div id="site-header"></div>
+
+<div class="lp-header"><div class="container"><a class="logo" href="index.html" aria-label="Pearls by Mangatrai"><img class="logo-img" src="assets/logo-navy.png" alt="Pearls by Mangatrai" width="900" height="123"></a><span style="font-size:12.5px;color:var(--muted);display:flex;align-items:center;gap:6px">🔒 Secure checkout · Cashfree</span></div></div>
+<div class="container co" id="coView">
+  <form id="coForm">
+    <div class="co-step"><h3><i>1</i> Contact</h3><div class="form"><div class="row2"><label>Phone / WhatsApp<input required name="phone" inputmode="tel" autocomplete="tel" placeholder="+91 98765 43210"></label><label>Email <span class="hint">(for invoice)</span><input type="email" name="email" autocomplete="email"></label></div><label style="grid-template-columns:auto 1fr;align-items:center;gap:8px;display:grid;font-weight:500"><input type="checkbox" checked style="width:16px;height:16px"> Send order updates on WhatsApp</label></div></div>
+    <div class="co-step"><h3><i>2</i> Delivery address</h3><div class="form"><div class="row2"><label>First name<input required name="fn" autocomplete="given-name"></label><label>Last name<input name="ln" autocomplete="family-name"></label></div><label>Address<input required name="a1" autocomplete="address-line1" placeholder="Flat, building, street"></label><label>Landmark <span class="hint">(optional)</span><input name="a2" autocomplete="address-line2"></label><div class="row2"><label>Pincode<input required name="pin" inputmode="numeric" maxlength="6" pattern="\d{6}" autocomplete="postal-code" id="coPin"></label><label>City<input required name="city" autocomplete="address-level2" id="coCity"></label></div><label>State<select name="state" id="coState"><option>Telangana</option><option>Andhra Pradesh</option><option>Karnataka</option><option>Maharashtra</option><option>Tamil Nadu</option><option>Delhi</option><option>Gujarat</option><option>West Bengal</option><option>Kerala</option><option>Other</option></select></label><label>Gift message <span class="hint">(optional, handwritten on a card)</span><input name="gift" maxlength="120" placeholder="e.g. Happy anniversary, Ma — with love"></label></div></div>
+    <div class="co-step"><h3><i>3</i> Delivery</h3><div class="paym"><label><input type="radio" name="ship" checked><div><b>Free insured delivery</b><small id="coEta">Arrives in 2–4 days</small></div><b style="color:var(--green)">Free</b></label></div></div>
+    <div class="co-step"><h3><i>4</i> Payment</h3><div class="paym">
+      <label><input type="radio" name="pay" value="UPI" checked><div><b>UPI</b><small>Google Pay, PhonePe, Paytm, any UPI app</small></div><span class="lg"><img src="assets/pay/upi.svg" alt="UPI"></span></label>
+      <label><input type="radio" name="pay" value="Card"><div><b>Credit / debit card</b><small>Visa, Mastercard, RuPay · secured by Cashfree</small></div><span class="lg"><img src="assets/pay/visa.svg" alt="Visa"><img src="assets/pay/mastercard.svg" alt="Mastercard"><img src="assets/pay/rupay.png" alt="RuPay"></span></label>
+      <label><input type="radio" name="pay" value="Simpl"><div><b>Pay in 3 · 0% interest</b><small id="simplLine">3 instalments with Simpl</small></div><span class="lg"><img src="assets/pay/simpl.png" alt="Simpl"></span></label>
+      <label id="codOpt"><input type="radio" name="pay" value="COD"><div><b>Cash on delivery</b><small>Available up to ₹20,000 · keep exact change ready</small></div><span class="lg"><img src="assets/pay/cod.svg" alt="COD"></span></label>
+    </div></div>
+    <button class="btn btn-primary btn-lg btn-block" type="submit" id="placeBtn">Place order · <span id="placeTot"></span></button>
+    <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:10px">By placing your order you agree to our <a href="policies.html#terms" style="text-decoration:underline">terms</a>. 15-day returns · Lifelong guarantee.</p>
+  </form>
+  <aside class="co-summary">
+    <b style="font-size:16px;color:var(--navy)">Order summary</b>
+    <div id="coLines"></div>
+    <div class="r" style="display:flex;justify-content:space-between;font-size:14px;border-top:1px solid var(--line);padding-top:10px"><span>Subtotal</span><b id="coSub"></b></div>
+    <div class="r" style="display:flex;justify-content:space-between;font-size:14px"><span>Shipping</span><b style="color:var(--green)">Free</b></div>
+    <div class="r" id="coDiscRow" style="display:flex;justify-content:space-between;font-size:14px" hidden><span>WELCOME5</span><b id="coDisc" style="color:var(--green)"></b></div>
+    <div class="r" style="display:flex;justify-content:space-between;font-size:16px;border-top:1px solid var(--line);padding-top:10px"><span>Total <small style="color:var(--muted)">incl. GST</small></span><b id="coTot" style="font-size:22px;color:var(--navy)"></b></div>
+    <div class="co-trust"><span>✓ Certificate of authenticity in the box</span><span>✓ Insured shipping, dispatch in 24 hrs</span><span>✓ 15-day free returns, lifelong guarantee</span></div>
+    <a class="link" href="cart.html" style="justify-self:start">← Edit bag</a>
+  </aside>
+</div>
+<div class="container thanks" id="thanks" hidden>
+  <div class="tick">✓</div>
+  <h1 style="font-size:32px">Thank you, <span id="tName"></span>!</h1>
+  <p style="color:var(--ink-2);margin:10px 0">Order <b id="tNo"></b> is confirmed. We will WhatsApp you the tracking number when it leaves Hyderabad, and it should arrive by <b id="tEta"></b>.</p>
+  <p style="color:var(--muted);font-size:14px">Your certificate of authenticity and GST invoice are in the box. Need anything? WhatsApp +91 91000 09220.</p>
+  <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px"><a class="btn btn-primary" href="index.html">Continue shopping</a><a class="btn btn-wa" href="https://wa.me/919100009220" target="_blank" rel="noopener"><img class="wa-logo" src="assets/pay/whatsapp.svg" alt="" aria-hidden="true"> Chat with us</a></div>
+</div>
+
+<div id="site-footer"></div>
+<script src="assets/data.js?v=30"></script>
+<script src="assets/app.js?v=30"></script>
+<script>
+window.PBM_PAGE = function(){
+const {byHandle,inr,cart}=PBM; const c=cart.get(); if(!c.length){ location.replace('cart.html'); return; }
+const sub=cart.total(); const pr=PBM.promo(); const promo=!!pr; const disc=pr?Math.round(sub*pr.pct/100):0; const tot=sub-disc; if(pr) document.querySelector('#coDiscRow span').textContent=`${pr.code} (${pr.pct}% off)`;
+document.getElementById('coLines').innerHTML=c.map(i=>{const p=byHandle[i.handle]; return `<div class="li"><img src="${p.images[0]}" alt=""><div><b>${p.title}</b><small>Qty ${i.qty}</small></div><span>${inr(p.price*i.qty)}</span></div>`;}).join('');
+document.getElementById('coSub').textContent=inr(sub); document.getElementById('coTot').textContent=inr(tot); document.getElementById('placeTot').textContent=inr(tot);
+document.getElementById('coDiscRow').hidden=!promo; document.getElementById('coDisc').textContent='−'+inr(disc);
+document.getElementById('simplLine').textContent=`3 × ${inr(tot/3)} with Simpl, 0% interest`;
+if(tot>20000){ const o=document.getElementById('codOpt'); o.style.opacity=.5; o.querySelector('input').disabled=true; o.querySelector('small').textContent='Not available above ₹20,000'; }
+const eta=d=>PBM.deliveryDate(d); document.getElementById('coEta').textContent='Arrives by '+eta(4);
+document.getElementById('coPin').addEventListener('input',e=>{ const v=e.target.value; if(v.length===6){ const metro=/^(5000|5600|4000|1100|6000|7000|4110|3800)/.test(v); document.getElementById('coEta').textContent='Arrives by '+eta(metro?2:4); const map={'50':['Hyderabad','Telangana'],'56':['Bengaluru','Karnataka'],'40':['Mumbai','Maharashtra'],'11':['New Delhi','Delhi'],'60':['Chennai','Tamil Nadu'],'70':['Kolkata','West Bengal'],'41':['Pune','Maharashtra'],'38':['Ahmedabad','Gujarat']}; const m=map[v.slice(0,2)]; if(m){ document.getElementById('coCity').value=m[0]; document.getElementById('coState').value=m[1]; } } });
+document.getElementById('coForm').addEventListener('submit',e=>{ e.preventDefault(); const f=e.target; const pay=f.pay.value; document.getElementById('placeBtn').textContent = pay==='COD' ? 'Confirming…' : 'Redirecting to Cashfree…'; setTimeout(()=>{ document.getElementById('tName').textContent=f.fn.value||'there'; document.getElementById('tNo').textContent='#PBM-'+(10500+Math.floor(Math.random()*400)); document.getElementById('tEta').textContent=document.getElementById('coEta').textContent.replace('Arrives by ',''); document.getElementById('coView').hidden=true; document.getElementById('thanks').hidden=false; cart.set([]); localStorage.removeItem('pbm_promo'); window.scrollTo(0,0); },900); });
+};
+</script>
+</body>
+</html>

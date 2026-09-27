@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1B1F4B">
+<title>Shop Pearl Jewellery — Pearls by Mangatrai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=30">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="container plp-head">
+  <div class="crumbs"><a href="index.html">Home</a> › <span id="crumb">All pearls</span></div>
+  <h1 id="plpTitle">All Pearl Jewellery</h1>
+  <p id="plpSub">Certified real pearls from ₹665. Free shipping, COD and 0% EMI on every order. Ships in 24 hours from Hyderabad.</p>
+  <div class="strip"><span class="tag">OFFER</span><span><b>Buy any 2, get 10% off</b> · auto-applied at checkout. Extra 5% with <b>WELCOME5</b>.</span><a href="#grid">Shop now</a></div>
+</div>
+
+<div class="filterbar"><div class="container row">
+  <div class="chips" id="chips">
+    <button class="chip on" data-f="all">All</button>
+    <button class="chip" data-f="cat:combos" style="border-color:var(--red);color:var(--red)">Combos</button>
+    <button class="chip" data-f="cat:sets">Sets</button>
+    <button class="chip" data-f="cat:necklaces">Necklaces</button>
+    <button class="chip" data-f="cat:earrings">Earrings</button>
+    <button class="chip" data-f="cat:bracelets">Bracelets</button>
+    <button class="chip" data-f="cat:rings">Rings</button>
+    <button class="chip" data-f="max:2000">Under ₹2,000</button>
+    <button class="chip" data-f="max:5000">Under ₹5,000</button>
+
+  </div>
+  <select id="sort" aria-label="Sort"><option value="best">Bestselling</option><option value="asc">Price: low → high</option><option value="desc">Price: high → low</option><option value="new">Newest</option></select>
+</div></div>
+
+<div class="container plp-layout">
+  <aside class="facets">
+    <div class="grp"><h4>Price</h4>
+      <label><input type="radio" name="price" value="" checked> Any</label>
+      <label><input type="radio" name="price" value="0-2000"> Under ₹2,000 <span class="n">studs, rings</span></label>
+      <label><input type="radio" name="price" value="2000-5000"> ₹2,000 – ₹5,000</label>
+      <label><input type="radio" name="price" value="5000-15000"> ₹5,000 – ₹15,000</label>
+      <label><input type="radio" name="price" value="15000-999999"> ₹15,000+</label>
+    </div>
+    <div class="grp"><h4>Pearl colour</h4>
+      <label><input type="checkbox" name="color" value="white"> White</label>
+      <label><input type="checkbox" name="color" value="pink"> Pink / Peach</label>
+      <label><input type="checkbox" name="color" value="lavender"> Lavender</label>
+      <label><input type="checkbox" name="color" value="golden"> Golden</label>
+      <label><input type="checkbox" name="color" value="grey"> Grey / Black</label>
+    </div>
+    <div class="grp"><h4>Occasion</h4>
+      <label><input type="checkbox" name="occ" value="everyday"> Everyday</label><label><input type="checkbox" name="occ" value="office"> Office</label><label><input type="checkbox" name="occ" value="wedding"> Wedding &amp; festive</label><label><input type="checkbox" name="occ" value="gift"> Gifting &amp; combos</label>
+    </div>
+    <div class="grp" style="border:0"><div class="cert" style="flex-direction:column;align-items:flex-start"><b>Not sure what to pick?</b><small>WhatsApp a photo of your outfit — we'll match a strand in minutes.</small><a class="btn btn-wa btn-sm" href="https://wa.me/919100009220" target="_blank"><img class="wa-logo" src="assets/pay/whatsapp.svg" alt="" aria-hidden="true"> Chat now</a></div></div>
+  </aside>
+  <div>
+    <div class="count" id="count"></div>
+    <div class="grid" id="grid"></div>
+    <div class="loadmore"><button class="btn btn-outline" onclick="PBM.toast('Loads next 24 products')">Load more</button><p style="color:var(--muted);font-size:13px;margin-top:10px">Showing <span id="shown"></span> of 639</p></div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="assets/data.js?v=30"></script>
+<script src="assets/app.js?v=30"></script>
+<script>
+window.PBM_PAGE = function(){
+  const {P, cardHTML, inr} = PBM;
+  const q = new URLSearchParams(location.search);
+  let f = { cat:q.get('cat'), min:+q.get('min')||0, max:+q.get('max')||Infinity, tag:q.get('tag'), q:(q.get('q')||'').toLowerCase(), colors:new Set(), occ:new Set() };
+  if(f.tag==='gift'){ f.cat='combos'; f.tag=null; }
+  const names={combos:'Pearl Combos & Gift Boxes',sets:'Pearl Necklace Sets',necklaces:'Pearl Necklaces',earrings:'Pearl Earrings & Studs',bracelets:'Pearl Bracelets',rings:'Pearl Rings'};
+  const subs={combos:'Our most-gifted, most-shared boxes. Several pieces, one price, ready to gift in the navy Mangatrai box.',sets:'Necklace, earrings and bracelet, matched by hand. The most-gifted pieces we make.',earrings:'Everyday studs and dangles from ₹665. Secure push backs, nickel-free posts.',bracelets:'Freshwater pearl bracelets in white and gold finish. Adjustable, from ₹1,400.',rings:'Adjustable pearl rings from ₹980. Perfect first pearl.',necklaces:'Single and multi-strand freshwater, Akoya and South Sea strands.'};
+  function title(){
+    let t = f.cat ? names[f.cat] : f.tag==='gift' ? 'Pearl Gift Boxes & Combos' : f.q ? `Results for “${f.q}”` : 'All Pearl Jewellery';
+    if(f.max<Infinity && !f.cat) t = `Pearls under ${inr(f.max)}`;
+    if(f.min && !f.cat && f.max===Infinity) t = `Pearls ${inr(f.min)} and above`;
+    document.getElementById('plpTitle').textContent=t; document.getElementById('crumb').textContent=t; document.title=t+' — Pearls by Mangatrai';
+    if(f.cat && subs[f.cat]) document.getElementById('plpSub').textContent=subs[f.cat];
+    if(f.tag==='gift') document.getElementById('plpSub').textContent='Ready-to-gift boxes with a handwritten note and free navy gift packaging. Ships in 24 hours.';
+  }
+  function apply(){
+    let list = P.filter(p=> (!f.cat||(f.cat==='combos'?p.combo:p.cat===f.cat)) && (!f.occ.size||[...f.occ].some(o=>o==='everyday'?p.price<2500:o==='office'?p.cat==='earrings':o==='wedding'?(p.cat==='sets'||p.cat==='necklaces')&&p.price>=5000:p.combo)) && p.price>=f.min && p.price<=f.max && (!f.tag||f.tag!=='gift'||/box|set|pairs/i.test(p.title)) && (!f.q||p.title.toLowerCase().includes(f.q)||p.cat.includes(f.q)) && (!f.colors.size||f.colors.has(p.color)||(f.colors.has('grey')&&p.color==='black')||(f.colors.has('pink')&&p.color==='peach')) );
+    const s=document.getElementById('sort').value;
+    if(s==='asc') list.sort((a,b)=>a.price-b.price); else if(s==='desc') list.sort((a,b)=>b.price-a.price); else if(s==='new') list=list.filter(p=>p.badge==='New').concat(list.filter(p=>p.badge!=='New'));
+    // Inject an editorial trust card after the 6th product (breaks scroll fatigue, restates guarantee)
+    const html = list.map((p,i)=>cardHTML(p,{eager:i<4})); 
+    if(html.length>6) html.splice(6,0,`<div class="promo-card"><div class="eyebrow" style="color:var(--gold-soft)">Our promise</div><h3>Real pearls or your money back</h3><p>Every piece is certified and guaranteed for life. Don't love it? Free returns within 15 days, no questions.</p><a class="link" style="color:#fff;border-color:var(--gold-soft);margin-top:8px;align-self:flex-start" href="education.html#grading">How we grade pearls →</a></div>`);
+    document.getElementById('grid').innerHTML = html.join('') || `<div class="empty" style="grid-column:1/-1"><b>No matches yet.</b><p>Try a wider budget, or <a class="link" href="collection.html">see everything</a>.</p></div>`;
+    document.getElementById('count').textContent = `${list.length} styles · Free shipping on all`;
+    document.getElementById('shown').textContent = list.length;
+    title();
+  }
+  // chips
+  document.getElementById('chips').addEventListener('click', e=>{ const b=e.target.closest('.chip'); if(!b) return; document.querySelectorAll('#chips .chip').forEach(c=>c.classList.remove('on')); b.classList.add('on');
+    f={cat:null,min:0,max:Infinity,tag:null,q:'',colors:f.colors,occ:f.occ}; const [k,v]=b.dataset.f.split(':'); if(k==='cat') f.cat=v; if(k==='max') f.max=+v; if(k==='tag') f.tag=v; apply(); });
+  // sidebar facets
+  document.querySelectorAll('input[name=price]').forEach(r=>r.addEventListener('change',()=>{ if(!r.value){f.min=0;f.max=Infinity;} else {const [a,b]=r.value.split('-');f.min=+a;f.max=+b;} apply(); }));
+  document.querySelectorAll('input[name=occ]').forEach(c=>c.addEventListener('change',()=>{ c.checked?f.occ.add(c.value):f.occ.delete(c.value); apply(); }));
+  document.querySelectorAll('input[name=color]').forEach(c=>c.addEventListener('change',()=>{ c.checked?f.colors.add(c.value):f.colors.delete(c.value); apply(); }));
+  document.getElementById('sort').addEventListener('change',apply);
+  // preselect chip from URL
+  const pre = f.cat?`cat:${f.cat}`: (f.max===2000||f.max===5000)?`max:${f.max}`:null;
+  if(pre){ document.querySelectorAll('#chips .chip').forEach(c=>c.classList.toggle('on', c.dataset.f===pre)); }
+  apply();
+};
+</script>
+</body>
+</html>

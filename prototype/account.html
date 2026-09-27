@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#1B1F4B">
+<title>My Account — Pearls by Mangatrai</title>
+<meta name="description" content="Sign in to Pearls by Mangatrai to track orders, manage addresses and view saved pieces.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css?v=30">
+</head>
+<body>
+<div id="site-header"></div>
+
+<div class="container plp-head"><div class="crumbs"><a href="index.html">Home</a> › My account</div><h1 id="acctTitle">My account</h1></div>
+<div class="container" style="padding-bottom:48px">
+  <div id="authView" class="two sticky" style="max-width:980px">
+    <div class="card-box">
+      <div class="tabs"><button class="tab on" data-tab="login">Sign in</button><button class="tab" data-tab="register">Create account</button></div>
+      <form class="form tabpane" id="loginPane" data-pane="login">
+        <label>Phone or email<input required name="id" placeholder="+91 or you@example.com" autocomplete="username"></label>
+        <label>Password<input required type="password" name="pw" autocomplete="current-password"></label>
+        <button class="btn btn-primary btn-lg" type="submit">Sign in</button>
+        <button class="btn btn-outline" type="button" id="otpBtn">Sign in with OTP instead</button>
+        <span class="hint">Forgot your password? <a href="#" onclick="event.preventDefault();PBM.toast('Reset link sent (demo)')" style="text-decoration:underline">Reset it</a>. On Shopify this becomes passwordless email/OTP login.</span>
+      </form>
+      <form class="form tabpane" id="registerPane" data-pane="register" hidden>
+        <div class="row2"><label>First name<input required name="fn" autocomplete="given-name"></label><label>Last name<input name="ln" autocomplete="family-name"></label></div>
+        <label>Phone / WhatsApp<input required name="phone" inputmode="tel" autocomplete="tel" placeholder="+91"></label>
+        <label>Email<input required type="email" name="email" autocomplete="email"></label>
+        <label>Password<input required type="password" name="pw" autocomplete="new-password" minlength="6"></label>
+        <label style="grid-template-columns:auto 1fr;align-items:center;gap:8px;display:grid;font-weight:500"><input type="checkbox" checked style="width:16px;height:16px"> Send me new arrivals and offers on WhatsApp</label>
+        <button class="btn btn-primary btn-lg" type="submit">Create account · get 5% off</button>
+        <span class="hint">Use code <b>WELCOME5</b> on your first order.</span>
+      </form>
+    </div>
+    <aside>
+      <div class="card-box" style="display:grid;gap:12px">
+        <b style="font-size:17px;color:var(--navy)">Why create an account?</b>
+        <ul class="checks" style="margin:0">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Track orders and download GST invoices</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Saved addresses for one-tap checkout</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Your wishlist, synced across devices</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Lifelong guarantee and restringing records</li>
+        </ul>
+        <a class="btn btn-wa" href="https://wa.me/919100009220" target="_blank" rel="noopener"><img class="wa-logo" src="assets/pay/whatsapp.svg" alt="" aria-hidden="true"> Order on WhatsApp instead</a>
+      </div>
+    </aside>
+  </div>
+  <div id="dashView" class="acct" hidden>
+    <nav class="acct-nav"><a href="#orders" class="on" data-sec="orders">Orders</a><a href="#saved" data-sec="saved">Saved items</a><a href="#addresses" data-sec="addresses">Addresses</a><a href="#profile" data-sec="profile">Profile</a><a href="#" id="logout">Sign out</a></nav>
+    <div>
+      <section class="card-box" data-secpane="orders">
+        <h2 style="font-size:22px;margin-bottom:6px">Your orders</h2><p style="color:var(--muted);font-size:14px;margin-bottom:6px">Track any parcel at <a href="https://www.bluedart.com/tracking" target="_blank" rel="noopener" style="text-decoration:underline">Blue Dart</a> with the number in your SMS.</p>
+        <div id="orders"></div>
+      </section>
+      <section class="card-box" data-secpane="saved" hidden><h2 style="font-size:22px;margin-bottom:12px">Saved items</h2><div class="grid" id="acctWish"></div></section>
+      <section class="card-box" data-secpane="addresses" hidden><h2 style="font-size:22px;margin-bottom:12px">Addresses</h2>
+        <div class="showroom" style="margin-bottom:12px"><b>Home <span class="status" style="margin-left:6px">Default</span></b><p>Flat 12B, Jubilee Heights, Road No. 36, Jubilee Hills, Hyderabad 500033</p><small>+91 91000 09220</small></div>
+        <button class="btn btn-outline btn-sm" onclick="PBM.toast('Address form opens here')">Add new address</button></section>
+      <section class="card-box" data-secpane="profile" hidden><h2 style="font-size:22px;margin-bottom:12px">Profile</h2>
+        <form class="form" onsubmit="event.preventDefault();PBM.toast('Profile saved')"><div class="row2"><label>Name<input value="Sushma R."></label><label>Phone<input value="+91 91000 09220"></label></div><label>Email<input value="sushma@example.com"></label><label style="grid-template-columns:auto 1fr;align-items:center;gap:8px;display:grid;font-weight:500"><input type="checkbox" checked style="width:16px;height:16px"> WhatsApp me about new arrivals and offers</label><button class="btn btn-primary" type="submit">Save changes</button></form></section>
+    </div>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+<script src="assets/data.js?v=30"></script>
+<script src="assets/app.js?v=30"></script>
+<script>
+window.PBM_PAGE = function(){
+const P=PBM.P; const user=()=>{ try{ return JSON.parse(localStorage.getItem('pbm_user')||'null'); }catch(e){ return null; } };
+const show=()=>{ const u=user(); document.getElementById('authView').hidden=!!u; document.getElementById('dashView').hidden=!u; document.getElementById('acctTitle').textContent = u ? `Hello, ${u.name.split(' ')[0]}` : 'My account'; if(u){ renderOrders(); renderWish(); } };
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{ document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===t)); document.querySelectorAll('.tabpane').forEach(p=>p.hidden=p.dataset.pane!==t.dataset.tab); }));
+document.getElementById('loginPane').addEventListener('submit',e=>{ e.preventDefault(); localStorage.setItem('pbm_user',JSON.stringify({name:'Sushma R.',id:e.target.id.value})); PBM.toast('Welcome back, Sushma'); show(); });
+document.getElementById('registerPane').addEventListener('submit',e=>{ e.preventDefault(); const f=e.target; localStorage.setItem('pbm_user',JSON.stringify({name:(f.fn.value+' '+f.ln.value).trim(),id:f.email.value})); PBM.toast('Account created · WELCOME5 applied at checkout'); show(); });
+document.getElementById('otpBtn').addEventListener('click',()=>PBM.toast('OTP sent to your phone (demo)'));
+document.getElementById('logout').addEventListener('click',e=>{ e.preventDefault(); localStorage.removeItem('pbm_user'); PBM.toast('Signed out'); show(); });
+document.querySelectorAll('.acct-nav a[data-sec]').forEach(a=>a.addEventListener('click',e=>{ e.preventDefault(); document.querySelectorAll('.acct-nav a').forEach(x=>x.classList.toggle('on',x===a)); document.querySelectorAll('[data-secpane]').forEach(s=>s.hidden=s.dataset.secpane!==a.dataset.sec); }));
+function renderOrders(){ const d=n=>{const x=new Date(); x.setDate(x.getDate()-n); return x.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}; const o=[[P.find(p=>p.combo),'#PBM-10482',d(2),'ship','In transit · arrives '+PBM.deliveryDate(2)],[P.find(p=>p.cat==='earrings'),'#PBM-9931',d(41),'','Delivered']]; document.getElementById('orders').innerHTML=o.map(([p,n,dt,c,st])=>`<div class="order"><img src="${p.images[0]}" alt=""><div><div class="t">${p.title}</div><div class="m">${n} · ${dt} · ${PBM.inr(p.price)}</div></div><span class="status ${c}">${st}</span></div>`).join(''); }
+function renderWish(){ const w=PBM.wish.get().map(h=>PBM.byHandle[h]).filter(Boolean); document.getElementById('acctWish').innerHTML = w.length ? w.map(p=>PBM.cardHTML(p)).join('') : '<div class="acct-empty" style="grid-column:1/-1">No saved items yet. Tap the heart on any piece.</div>'; }
+document.addEventListener('click',e=>{ if(e.target.closest('[data-wish]')) setTimeout(renderWish,50); });
+show();
+};
+</script>
+</body>
+</html>
